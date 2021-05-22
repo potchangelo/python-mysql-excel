@@ -2,9 +2,13 @@
  
 Example Python codes that do the processes between MySQL database and Excel spreadsheet files.
 
-## Database structure
+## Setup database table
 
---- Image
+![Database table structure](/snapshots/db-table-structure.png?raw=true "Database table structure")
+*Structure*
+
+![Database table sample data](/snapshots/db-table-data.png?raw=true "Database table sample data")
+*Sample data*
 
 ## Install Python 3 and pipenv
 

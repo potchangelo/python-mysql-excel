@@ -1,5 +1,5 @@
 # Import ข้อมูลจากไฟล์ Excel (.xlsx) เข้าสู่ Database MySQL
-# เป็นการ Import ข้อมูลทุกแถว
+# ทำเหมือน "import_data_02" แต่คราวนี้ในไฟล์จะไม่ใส่เลข 0 สำหรับสินค้าที่ไม่จำเป็น
 # โดยข้อมูลจากไฟล์ Excel จะเริ่มต้นตรงแถวที่ 2
 
 import mysql.connector
@@ -8,15 +8,23 @@ from openpyxl import load_workbook
 def run():
     # Excel
     # - โหลดไฟล์ และโหลดชีทที่เปิดอยู่
-    workbook = load_workbook('./files/imported_01.xlsx')
+    workbook = load_workbook('./files/imported_03.xlsx')
     sheet = workbook.active
 
-    # - เก็บข้อมูล (values_only คือ แบบดิบๆ) ทีละแถวไว้ใน List
+    # - ต้องทำการตรวจสอบและแปลงข้อมูลในแต่ละแถวก่อน
+    # - จากนั้นค่อยเก็บข้อมูลจากแถวที่ข้อมูลครบถ้วนไว้ใน List
     # - เริ่มต้นจากแถวที่ 2 ไปจนถึงแถวสุดท้าย
     values = []
     for row in sheet.iter_rows(min_row=2, values_only=True):
-        print(row)
-        values.append(row)
+        p = list(row[:3])
+        if p[0] is None or p[1] is None:
+            continue
+
+        if p[2] is None:
+            p[2] = 0
+
+        print(p)
+        values.append(p)
 
     # Database
     # - เชื่อมต่อ Database (เปลี่ยนค่า Connection เป็นของเครื่องตัวเองเน่อ)

@@ -5,7 +5,7 @@ import mysql.connector
 from openpyxl import load_workbook
 
 # Excel
-# - โหลดไฟล์ และโหลด Sheet ที่เปิดอยู่
+# - โหลดไฟล์ และโหลดชีทที่เปิดอยู่
 workbook = load_workbook('imported.xlsx')
 sheet = workbook.active
 

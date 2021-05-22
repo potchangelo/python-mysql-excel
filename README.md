@@ -4,10 +4,10 @@ Example Python codes that do the processes between MySQL database and Excel spre
 
 ## Setup database table
 
-![Database table structure](/snapshots/db-table-structure.png?raw=true "Database table structure")
+![Database table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel-1/dev/snapshots/db-table-structure.png?token=AC32DU3FQXPZQTWUTPCOUTTAVDU4I "Database table structure")
 *Structure*
 
-![Database table sample data](/snapshots/db-table-data.png?raw=true "Database table sample data")
+![Database table sample data](https://raw.githubusercontent.com/potchangelo/python-mysql-excel-1/dev/snapshots/db-table-data.png?token=AC32DU2GRDIWEPS42KOMO6DAVDU6G "Database table sample data")
 *Sample data*
 
 ## Install Python 3 and pipenv

@@ -1,5 +1,6 @@
 # Export ข้อมูลจาก Database MySQL ออกมาเป็นไฟล์ Excel (.xlsx)
-# เป็นการ Export ข้อมูลทุกแถว
+# เป็นการ Export ข้อมูลทุกแถว แต่เอาเฉพาะข้อมูลชื่อสินค้า, ราคาสินค้า, วันที่บันทึก
+# และต้องทำการแสดงวันที่บันทึก ในรูปแบบ "25 November 2021"
 
 import mysql.connector
 from openpyxl import Workbook
@@ -19,7 +20,7 @@ def run():
     # - Python จะรับข้อมูลทั้งหมดมาเป็น List ผ่านคำสั่ง fetchall()
     cursor = db.cursor()
     sql = '''
-        SELECT * 
+        SELECT title, price, created_at 
         FROM products;
     '''
     cursor.execute(sql)
@@ -29,12 +30,14 @@ def run():
     # - สร้างไฟล์ใหม่ สร้างชีท และใส่แถวสำหรับเป็นหัวข้อตาราง
     workbook = Workbook()
     sheet = workbook.active
-    sheet.append(['ID', 'ชื่อสินค้า', 'ราคา', 'ต้องการมากๆ', 'วันที่บันทึก'])
+    sheet.append(['ชื่อสินค้า', 'ราคา', 'วันที่บันทึก'])
 
     # - ใส่ข้อมูลทีละอัน เพิ่มลงไปทีละแถว
     for p in products:
-        print(p)
-        sheet.append(p)
+        p_real = list(p)
+        p_real[2] = p_real[2].strftime('%d %B %Y')
+        print(p_real)
+        sheet.append(p_real)
 
     # - Export ไฟล์ Excel
-    workbook.save(filename="./files/exported_01.xlsx")
+    workbook.save(filename="./files/exported_03.xlsx")

@@ -36,7 +36,9 @@ Note: for macOS with pre-installed Python 2, use pip3 instead of pip.
 pipenv install
 ```
 
-5. Open "import_data.py" or "export_data.py", right click on code area, select Run '{file name}'
+5. Open "main.py", right click on code area, select Run 'main'
+
+6. Program will inform you, to type one file name from "scripts" folder to be run.
 
 ## Install and run project by CLI
 
@@ -54,14 +56,10 @@ pipenv install
 pipenv shell
 ```
 
-4. Run "import_data.py" or "export_data.py"
+4. Run "main.py"
 
 ```
-python import_data.py
+python main.py
 ```
 
-or 
-
-```
-python export_data.py
-```
+5. Program will inform you, to type one file name from "scripts" folder to be run.

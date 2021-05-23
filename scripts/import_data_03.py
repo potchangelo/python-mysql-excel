@@ -1,6 +1,5 @@
 # Import ข้อมูลจากไฟล์ Excel (.xlsx) เข้าสู่ Database MySQL
 # ทำเหมือน "import_data_02" แต่คราวนี้ในไฟล์จะไม่ใส่เลข 0 สำหรับสินค้าที่ไม่จำเป็น
-# โดยข้อมูลจากไฟล์ Excel จะเริ่มต้นตรงแถวที่ 2
 
 import mysql.connector
 from openpyxl import load_workbook

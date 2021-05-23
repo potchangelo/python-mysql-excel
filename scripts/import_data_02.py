@@ -1,6 +1,5 @@
 # Import ข้อมูลจากไฟล์ Excel (.xlsx) เข้าสู่ Database MySQL
 # เป็นการ Import เฉพาะแถวที่มีข้อมูลครบถ้วนเท่านั้น
-# โดยข้อมูลจากไฟล์ Excel จะเริ่มต้นตรงแถวที่ 2
 
 import mysql.connector
 from openpyxl import load_workbook

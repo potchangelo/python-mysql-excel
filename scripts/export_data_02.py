@@ -39,3 +39,7 @@ def run():
 
     # - Export ไฟล์ Excel
     workbook.save(filename="./files/exported_02.xlsx")
+
+    # ปิดการเชื่อมต่อ Database
+    cursor.close()
+    db.close()

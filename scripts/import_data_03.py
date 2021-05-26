@@ -47,3 +47,7 @@ def run():
 
     # - สรุปจำนวนข้อมูลที่เพิ่มไป
     print('เพิ่มข้อมูลจำนวน ' + str(cursor.rowcount) + ' แถว')
+
+    # ปิดการเชื่อมต่อ Database
+    cursor.close()
+    db.close()

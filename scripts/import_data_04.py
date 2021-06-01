@@ -82,7 +82,6 @@ def run():
         products_values.append(product)
 
     # - เพิ่มข้อมูลสินค้า
-    cursor = db.cursor()
     sql = '''
         INSERT INTO products (title, price, is_necessary, category_id)
         VALUES (%s, %s, %s, %s);

@@ -19,7 +19,7 @@ def run():
         port=3306,
         user="root",
         password="password1234",
-        database='golf_want_to_buy_completed'
+        database='golf_want_to_buy'
     )
     cursor = db.cursor()
 

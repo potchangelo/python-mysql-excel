@@ -18,10 +18,8 @@ def run():
         p = list(row[:3])
         if p[0] is None or p[1] is None:
             continue
-
         if p[2] is None:
             p[2] = 0
-
         print(p)
         values.append(p)
 

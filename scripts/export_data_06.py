@@ -16,10 +16,11 @@ def run():
         database='golf_want_to_buy'
     )
 
-    # - โหลดข้อมูลสินค้าที่รวม Hashtags ทั้งหมดมาด้วย
+    # - โหลดข้อมูลสินค้าที่รวมแฮชแท็กทั้งหมดมาด้วย
     cursor = db.cursor()
     sql = '''
-        SELECT p.id AS id, p.title AS title, p.price AS price, GROUP_CONCAT(ph.hashtag SEPARATOR ' ') AS hashtags
+        SELECT p.id AS id, p.title AS title, p.price AS price, 
+        GROUP_CONCAT(ph.hashtag SEPARATOR ' ') AS hashtags
         FROM products AS p
         LEFT JOIN (
             SELECT ph1.product_id AS product_id, h1.hashtag AS hashtag

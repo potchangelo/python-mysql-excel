@@ -7,6 +7,11 @@ import mysql.connector
 from openpyxl import load_workbook
 
 def run():
+    # Excel
+    # - โหลดไฟล์ และโหลดชีทที่เปิดอยู่
+    workbook = load_workbook('./files/imported_04.xlsx')
+    sheet = workbook.active
+
     # Database
     # - เชื่อมต่อ Database (เปลี่ยนค่า Connection เป็นของเครื่องตัวเองเน่อ)
     db = mysql.connector.connect(
@@ -18,8 +23,7 @@ def run():
     )
     cursor = db.cursor()
 
-    # Database
-    # - โหลดข้อมูล categories
+    # - โหลดข้อมูลประเภทสินค้าทั้งหมด
     sql = '''
         SELECT * 
         FROM categories;
@@ -27,12 +31,7 @@ def run():
     cursor.execute(sql)
     categories = cursor.fetchall()
 
-    # Excel
-    # - โหลดไฟล์ และโหลดชีทที่เปิดอยู่
-    workbook = load_workbook('./files/imported_04.xlsx')
-    sheet = workbook.active
-
-    # - เอา Category ใหม่มาใส่ใน List
+    # - เอาประเภทสินค้าใหม่ มาใส่ใน List
     categories_values = []
     for row in sheet.iter_rows(min_row=2, values_only=True):
         is_new = True
@@ -47,7 +46,6 @@ def run():
             print((category,))
             categories_values.append((category,))
 
-    # Database
     # - เพิ่มข้อมูลประเภทสินค้า (ถ้ามีอันใหม่)
     if len(categories_values) > 0:
         sql = '''
@@ -60,8 +58,7 @@ def run():
     else:
         print('ไม่มีประเภทสินค้าใหม่มาเพิ่ม')
 
-    # Database
-    # - โหลดข้อมูลประเภทสินค้า หลังบันทึกล่าสุดไปแล้ว
+    # - โหลดข้อมูลประเภทสินค้าทั้งหมด (หลังบันทึกล่าสุดไปแล้ว)
     sql = '''
         SELECT * 
         FROM categories;
@@ -84,7 +81,6 @@ def run():
         print(product)
         products_values.append(product)
 
-    # Database
     # - เพิ่มข้อมูลสินค้า
     cursor = db.cursor()
     sql = '''

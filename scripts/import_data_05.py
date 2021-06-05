@@ -53,7 +53,7 @@ def run():
 
     # - เพิ่มข้อมูลโน้ตสินค้า
     sql = '''
-        INSERT INTO product_notes (notes, product_id)
+        INSERT INTO product_notes (note, product_id)
         VALUES (%s, %s);
     '''
     cursor.executemany(sql, product_notes_values)

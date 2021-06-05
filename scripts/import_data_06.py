@@ -55,7 +55,7 @@ def run():
     # - เพิ่มข้อมูลแฮชแท็ก (ถ้ามีอันใหม่)
     if len(hashtags_values) > 0:
         sql = '''
-            INSERT INTO hashtags (hashtag)
+            INSERT INTO hashtags (title)
             VALUES (%s);
         '''
         cursor.executemany(sql, hashtags_values)

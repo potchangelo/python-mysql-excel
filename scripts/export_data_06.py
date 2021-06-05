@@ -1,6 +1,6 @@
 # Export ข้อมูลจาก Database MySQL ออกมาเป็นไฟล์ Excel (.xlsx)
 # เป็นการ Export ข้อมูลสินค้าทุกแถว
-# และรวมแฮชแท็กทั้งหมดของสินค้าแต่ละอัน มาแสดงด้วย
+# และรวมประเภทสินค้าของแต่ละอัน มาแสดงด้วย
 
 import mysql.connector
 from openpyxl import Workbook
@@ -19,17 +19,10 @@ def run():
     # - โหลดข้อมูลสินค้าที่รวมแฮชแท็กทั้งหมดมาด้วย
     cursor = db.cursor()
     sql = '''
-        SELECT p.id AS id, p.title AS title, p.price AS price, 
-        GROUP_CONCAT(ph.hashtag SEPARATOR ' ') AS hashtags
+        SELECT p.id AS id, p.title AS title, p.price AS price, c.title AS category
         FROM products AS p
-        LEFT JOIN (
-            SELECT ph1.product_id AS product_id, h1.hashtag AS hashtag
-            FROM products_hashtags AS ph1
-            LEFT JOIN hashtags AS h1
-            ON ph1.hashtag_id = h1.id
-        ) AS ph
-        ON p.id = ph.product_id
-        GROUP BY p.id;
+        LEFT JOIN categories AS c
+        ON p.category_id = c.id;
     '''
     cursor.execute(sql)
     products = cursor.fetchall()
@@ -38,7 +31,7 @@ def run():
     # - สร้างไฟล์ใหม่ สร้างชีท และใส่แถวสำหรับเป็นหัวข้อตาราง
     workbook = Workbook()
     sheet = workbook.active
-    sheet.append(['ID', 'ชื่อสินค้า', 'ราคา', 'แฮชแท็ก'])
+    sheet.append(['ID', 'ชื่อสินค้า', 'ราคา', 'ประเภทสินค้า'])
 
     # - ใส่ข้อมูลทีละอัน เพิ่มลงไปทีละแถว
     for p in products:

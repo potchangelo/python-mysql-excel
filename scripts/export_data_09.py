@@ -1,6 +1,6 @@
 # Export ข้อมูลจาก Database MySQL ออกมาเป็นไฟล์ Excel (.xlsx)
-# เป็นการ Export ข้อมูลสินค้าทุกแถว รวมประเภทสินค้าด้วย มาอยู่ในชีทแรก
-# และ Export ข้อมูลประเภทสินค้าทุกแถว พร้อมนับจำนวนสินค้า มาอยู่ในชีทที่สอง
+# เป็นการ Export ข้อมูลสินค้าทุกแถว
+# รวมประเภทสินค้า, แฮชแท็กทั้งหมด, และโน้ตของสินค้าแต่ละอัน มาแสดงด้วย
 
 import mysql.connector
 from openpyxl import Workbook
@@ -15,51 +15,40 @@ def run():
         password="password1234",
         database='golf_want_to_buy'
     )
-    cursor = db.cursor()
 
-    # - โหลดข้อมูลสินค้าที่รวมประเภทสินค้ามาด้วย
+    # - โหลดข้อมูลสินค้า ที่รวมประเภทสินค้า, แฮชแท็ก, โน้ต มาด้วย
+    cursor = db.cursor()
     sql = '''
-        SELECT p.id AS id, p.title AS title, p.price AS price, c.title AS category
+        SELECT p.id AS id, p.title AS title, p.price AS price, 
+        c.title AS category, GROUP_CONCAT(ph.title SEPARATOR ' ') AS hashtags, 
+        pn.note AS note
         FROM products AS p
         LEFT JOIN categories AS c
         ON p.category_id = c.id
+        LEFT JOIN (
+            SELECT ph1.product_id AS product_id, h1.title AS title
+            FROM products_hashtags AS ph1
+            LEFT JOIN hashtags AS h1
+            ON ph1.hashtag_id = h1.id
+        ) AS ph
+        ON p.id = ph.product_id
+        LEFT JOIN product_notes AS pn
+        ON p.id = pn.product_id
+        GROUP BY p.id;
     '''
     cursor.execute(sql)
     products = cursor.fetchall()
 
-    # - โหลดข้อมูลประเภทสินค้า พร้อมนับจำนวนสินค้าด้วย
-    sql = '''
-        SELECT c.id AS id, c.title AS title, COUNT(p.id) AS products_count
-        FROM categories AS c
-        LEFT JOIN products AS p
-        ON c.id = p.category_id
-        GROUP BY c.id
-    '''
-    cursor.execute(sql)
-    categories = cursor.fetchall()
-
     # Excel
-    # - สร้างไฟล์ใหม่
+    # - สร้างไฟล์ใหม่ สร้างชีท และใส่แถวสำหรับเป็นหัวข้อตาราง
     workbook = Workbook()
+    sheet = workbook.active
+    sheet.append(['ID', 'ชื่อสินค้า', 'ราคา', 'ประเภทสินค้า', 'แฮชแท็ก', 'โน้ต'])
 
-    # - สร้างชีทสำหรับสินค้า
-    products_sheet = workbook.active
-    products_sheet.title = 'สินค้า'
-    products_sheet.append(['ID', 'ชื่อสินค้า', 'ราคา', 'ประเภทสินค้า'])
-
-    # - ใส่ข้อมูลสินค้าทีละอัน เพิ่มลงไปทีละแถว
+    # - ใส่ข้อมูลทีละอัน เพิ่มลงไปทีละแถว
     for p in products:
         print(p)
-        products_sheet.append(p)
-
-    # - สร้างชีทสำหรับประเภทสินค้า
-    categories_sheet = workbook.create_sheet('ประเภทสินค้า', 1)
-    categories_sheet.append(['ID', 'ประเภทสินค้า', 'จำนวนสินค้า'])
-
-    # - ใส่ข้อมูลประเภทสินค้าทีละอัน เพิ่มลงไปทีละแถว
-    for c in categories:
-        print(c)
-        categories_sheet.append(c)
+        sheet.append(p)
 
     # - Export ไฟล์ Excel
     workbook.save(filename="./files/exported_09.xlsx")

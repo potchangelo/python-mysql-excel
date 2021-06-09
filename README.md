@@ -2,13 +2,27 @@
  
 Example Python codes that do the processes between MySQL database and Excel spreadsheet files.
 
+## YouTube videos
+
+- [MySQL #01](https://www.youtube.com/watch?v=axraNvtHjO4)
+- MySQL #02 is coming soon
+
 ## Setup database table
 
-![Database table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel-1/dev/snapshots/db-table-structure.png?token=AC32DU3FQXPZQTWUTPCOUTTAVDU4I "Database table structure")
-*Structure*
+![products table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/db-table-products-structure.jpg "products table structure")
+*products table structure*
 
-![Database table sample data](https://raw.githubusercontent.com/potchangelo/python-mysql-excel-1/dev/snapshots/db-table-data.png?token=AC32DU2GRDIWEPS42KOMO6DAVDU6G "Database table sample data")
-*Sample data*
+![product_notes table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/db-table-product-notes-structure.jpg "product_notes table structure")
+*product_notes table structure*
+
+![categories table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/db-table-categories-structure.jpg "categories table structure")
+*categories table structure*
+
+![hashtags table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/db-table-hashtags-structure.jpg "hashtags table structure")
+*hashtags table structure*
+
+![products_hashtags table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/db-table-products-hashtags-structure.jpg "products_hashtags table structure")
+*products_hashtags table structure*
 
 ## Install Python 3 and pipenv
 

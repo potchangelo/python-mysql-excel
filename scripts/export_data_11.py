@@ -20,24 +20,24 @@ def run():
     cursor = db.cursor()
 
     # - โหลดข้อมูลสินค้าที่รวมประเภทสินค้ามาด้วย
-    sql = '''
+    sql_select_products = '''
         SELECT p.id AS id, p.title AS title, p.price AS price, c.title AS category
         FROM products AS p
         LEFT JOIN categories AS c
         ON p.category_id = c.id;
     '''
-    cursor.execute(sql)
+    cursor.execute(sql_select_products)
     products = cursor.fetchall()
 
     # - โหลดข้อมูลประเภทสินค้า พร้อมนับจำนวนสินค้าด้วย
-    sql = '''
+    sql_select_categories = '''
         SELECT c.id AS id, c.title AS title, COUNT(p.id) AS products_count
         FROM categories AS c
         LEFT JOIN products AS p
         ON c.id = p.category_id
         GROUP BY c.id;
     '''
-    cursor.execute(sql)
+    cursor.execute(sql_select_categories)
     categories = cursor.fetchall()
 
     # Excel

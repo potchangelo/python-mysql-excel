@@ -9,19 +9,19 @@ Example Python codes that do the processes between MySQL database and Excel spre
 
 ## Setup database table
 
-![products table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/db-table-products-structure.jpg "products table structure")
+![products table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/yt-2-db-table-products-structure.jpg "products table structure")
 *products table structure*
 
-![product_notes table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/db-table-product-notes-structure.jpg "product_notes table structure")
+![product_notes table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/yt-2-db-table-product-notes-structure.jpg "product_notes table structure")
 *product_notes table structure*
 
-![categories table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/db-table-categories-structure.jpg "categories table structure")
+![categories table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/yt-2-db-table-categories-structure.jpg "categories table structure")
 *categories table structure*
 
-![hashtags table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/db-table-hashtags-structure.jpg "hashtags table structure")
+![hashtags table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/yt-2-db-table-hashtags-structure.jpg "hashtags table structure")
 *hashtags table structure*
 
-![products_hashtags table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/db-table-products-hashtags-structure.jpg "products_hashtags table structure")
+![products_hashtags table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/yt-2-db-table-products-hashtags-structure.jpg "products_hashtags table structure")
 *products_hashtags table structure*
 
 ## Install Python 3 and pipenv

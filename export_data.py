@@ -12,13 +12,14 @@ db = mysql.connector.connect(
     password="password1234",
     database='golf_want_to_buy'
 )
-
-# - ส่งคำสั่ง SQL ไปให้ MySQL ทำการโหลดข้อมูล
-# - Python จะรับข้อมูลทั้งหมดมาเป็น List ผ่านคำสั่ง fetchall()
 cursor = db.cursor()
+
+# - โหลดข้อมูลสินค้า พร้อมประเภทสินค้า
 sql = '''
-    SELECT * 
-    FROM products;
+    SELECT p.id AS id, p.title AS title, p.price AS price, c.title AS category
+    FROM products AS p
+    LEFT JOIN categories AS c
+    ON p.category_id = c.id;
 '''
 cursor.execute(sql)
 products = cursor.fetchall()
@@ -27,7 +28,7 @@ products = cursor.fetchall()
 # - สร้างไฟล์ใหม่ สร้างชีท และใส่แถวสำหรับเป็นหัวข้อตาราง
 workbook = Workbook()
 sheet = workbook.active
-sheet.append(['ID', 'ชื่อสินค้า', 'ราคา', 'ต้องการมากๆ', 'วันที่บันทึก'])
+sheet.append(['ID', 'ชื่อสินค้า', 'ราคาสินค้า', 'ประเภทสินค้า'])
 
 # - ใส่ข้อมูลทีละอัน เพิ่มลงไปทีละแถว
 for p in products:
@@ -36,3 +37,7 @@ for p in products:
 
 # - Export ไฟล์ Excel
 workbook.save(filename="exported.xlsx")
+
+# ปิดการเชื่้อมต่อ Database
+cursor.close()
+db.close()

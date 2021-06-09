@@ -2,12 +2,14 @@
  
 Example Python codes that do the processes between MySQL database and Excel spreadsheet files.
 
+https://www.youtube.com/watch?v=axraNvtHjO4
+
 ## Setup database table
 
-![Database table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel-1/dev/snapshots/db-table-structure.png?token=AC32DU3FQXPZQTWUTPCOUTTAVDU4I "Database table structure")
+![Database table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/yt-1-db-table-structure.png "Database table structure")
 *Structure*
 
-![Database table sample data](https://raw.githubusercontent.com/potchangelo/python-mysql-excel-1/dev/snapshots/db-table-data.png?token=AC32DU2GRDIWEPS42KOMO6DAVDU6G "Database table sample data")
+![Database table sample data](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/yt-1-db-table-data.png "Database table sample data")
 *Sample data*
 
 ## Install Python 3 and pipenv

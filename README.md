@@ -5,7 +5,7 @@ Example Python codes that do the processes between MySQL database and Excel spre
 ## YouTube videos
 
 - [MySQL #01](https://www.youtube.com/watch?v=axraNvtHjO4)
-- MySQL #02 is coming soon
+- [MySQL #02](https://www.youtube.com/watch?v=xXDR9rxVfA8)
 
 ## Setup database table
 

@@ -2,7 +2,7 @@
  
 Example Python codes that do the processes between MySQL database and Excel spreadsheet files.
 
-YouTube video is coming soon...
+https://www.youtube.com/watch?v=xXDR9rxVfA8
 
 ## Setup database table
 

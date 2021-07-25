@@ -4,8 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-mysql-connector-python = "*"
-openpyxl = "*"
+mysql-connector-python = ">=8.0.26"
+openpyxl = ">= 3.0.7"
 
 [dev-packages]
 

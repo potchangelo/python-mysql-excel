@@ -1,11 +1,11 @@
-# Python x MySQL x Excel by Zinglecode
- 
-Example Python codes that do the processes between MySQL database and Excel spreadsheet files.
+# Python x MySQL x Excel
+
+ตัวอย่างโปรเจ็คอ่าน/บันทึกข้อมูลระหว่าง Database MySQL กับไฟล์ Excel จากคลิปสอน MySQL เบื้องต้น Ep.1-2 ของ Zinglecode
 
 ## YouTube videos
 
-- [MySQL #01](https://www.youtube.com/watch?v=axraNvtHjO4)
-- [MySQL #02](https://www.youtube.com/watch?v=xXDR9rxVfA8)
+- [สอน MySQL เบื้องต้น #01](https://www.youtube.com/watch?v=axraNvtHjO4)
+- [สอน MySQL เบื้องต้น #02](https://www.youtube.com/watch?v=xXDR9rxVfA8)
 
 ## Setup database table
 
@@ -24,56 +24,50 @@ Example Python codes that do the processes between MySQL database and Excel spre
 ![products_hashtags table structure](https://raw.githubusercontent.com/potchangelo/python-mysql-excel/dev/snapshots/yt-2-db-table-products-hashtags-structure.jpg "products_hashtags table structure")
 *products_hashtags table structure*
 
-## Install Python 3 and pipenv
-
-1. Download Python 3 installation file from https://www.python.org/
-
-2. Install pipenv as global package by this command.
-
-```
-pip install pipenv
-```
-
-Note: for macOS with pre-installed Python 2, use pip3 instead of pip.
-
 ## Install and run project by PyCharm
 
-1. Download this project.
+0. ติดตั้ง MySQL, MySQL Workbench, Python 3, Pipenv, และ PyCharm ลงเครื่องให้เรียบร้อยก่อน
 
-2. Open PyCharm and choose File -> Open... -> Then select project folder
+1. ดาวน์โหลดโปรเจ็คนี้ลงเครื่อง
 
-3. Fix any warning recommended by PyCharm.
+2. เปิดโฟลเดอร์โปรเจ็คใน PyCharm โดยเลือกที่เมนู File -> Open... -> และเลือกโฟลเดอร์
 
-4. Make sure that every project packages is installed, by open PyCharm Terminal and type command.
+3. แก้ไข Warning อะไรก็ตามที่ขึ้นมาใน PyCharm ให้เรียบร้อย
+
+4. ติดตั้ง Packages
 
 ```
 pipenv install
 ```
 
-5. Open "main.py", right click on code area, select Run 'main'
+5. เปิดไฟล์ main.py และคลิกขวาที่พื้นที่เขียนโค้ด แล้วเลือก Run 'main'
 
-6. Program will inform you, to type one file name from "scripts" folder to be run.
+6. โปรแกรมจะให้ระบุชื่อไฟล์ที่ต้องการรัน ดูชื่อไฟล์ได้จากโฟลเดอร์ scripts (ใส่ไปแบบไม่ต้องเติม .py)
 
 ## Install and run project by CLI
 
-1. Download this project
+0. ติดตั้ง MySQL, MySQL Workbench, Python 3, และ Pipenv ลงเครื่องให้เรียบร้อยก่อน
 
-2. Open Terminal or Command Prompt at project folder, then install packages.
+1. ดาวน์โหลดโปรเจ็คนี้ลงเครื่อง
+
+2. เปิด Terminal หรือ Command Prompt หรือ PowerShell ที่โฟลเดอร์โปรเจ็ค
+
+3. ติดตั้ง Packages
 
 ```
 pipenv install
 ```
 
-3. Activate pipenv environment.
+4. Activate pipenv environment
 
 ```
 pipenv shell
 ```
 
-4. Run "main.py"
+5. รันไฟล์ main.py
 
 ```
 python main.py
 ```
 
-5. Program will inform you, to type one file name from "scripts" folder to be run.
+6. โปรแกรมจะให้ระบุชื่อไฟล์ที่ต้องการรัน ดูชื่อไฟล์ได้จากโฟลเดอร์ scripts (ใส่ไปแบบไม่ต้องเติม .py)
